@@ -10,16 +10,17 @@ export const RavenIcon: React.FC<RavenIconProps> = ({
   variant = 'blue'
 }) => {
   const getLogoSrc = () => {
+    const base = import.meta.env.BASE_URL || '/';
     switch (variant) {
       case 'emerald':
-        return '/logo-emerald.png';
+        return `${base}logo-emerald.png`;
       case 'amber':
-        return '/logo-amber.png';
+        return `${base}logo-amber.png`;
       case 'original':
-        return '/logo.png';
+        return `${base}logo.png`;
       case 'blue':
       default:
-        return '/logo-blue.png';
+        return `${base}logo-blue.png`;
     }
   };
 
