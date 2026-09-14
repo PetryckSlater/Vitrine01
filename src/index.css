@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-primary: #060913;
+    --bg-card: rgba(11, 18, 33, 0.75);
+    --border-color: rgba(59, 130, 246, 0.15);
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #172554;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Glassmorphism card utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.dark .glass-card {
+  background: rgba(11, 18, 33, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(148, 163, 184, 0.45);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.05);
+}
+.dark .glass-card-hover:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.25);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+.dark .glass-nav {
+  background: rgba(6, 9, 19, 0.85);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 60px -10px rgba(59, 130, 246, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 60px -10px rgba(56, 189, 248, 0.35);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #bae6fd 0%, #60a5fa 35%, #3b82f6 70%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Raven Animations */
+@keyframes float-raven {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
+}
+.animate-float-raven {
+  animation: float-raven 4s ease-in-out infinite;
+}
+
+@keyframes fly-in-up {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fly-in {
+  animation: fly-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* Wing sweep glare effect */
+.group:hover .wing-sweep {
+  animation: sweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes sweep {
+  0% { transform: translateX(-150%) skewX(-30deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(250%) skewX(-30deg); opacity: 0; }
+}
+.wing-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.15), transparent);
+  transform: translateX(-150%) skewX(-30deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
